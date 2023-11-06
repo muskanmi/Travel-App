@@ -4,17 +4,19 @@ import Link from "next/link"
 import Image from "next/image"
 import { NAV_LINKS } from "@/constants"
 import Button from "./Button"
-import { useState } from 'react';
+// import { useState } from 'react';
 // import LoginForm from "./LoginForm";
 import './modal.css'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
 
-    const [showLoginForm, setShowLoginForm] = useState(false);
+    // const [showLoginForm, setShowLoginForm] = useState(false);
 
-    const toggleLoginForm = () => {
-        setShowLoginForm(!showLoginForm);
-    };
+    // const toggleLoginForm = () => {
+    //     setShowLoginForm(!showLoginForm);
+    // };
 
     return (
         <div className="nav-container">
@@ -32,14 +34,27 @@ const Navbar = () => {
                 </ul>
 
                 <div className="lg:flexCenter hidden">
-                    <Button
-                        type="button"
-                        title="Login"
-                        icon="/user.svg"
-                        variant="btn_dark_green"
-                        onClick={toggleLoginForm}
-                    />
+                    <Link href="/register" style={{ marginRight: '10px'}}>
+                        <Button
+                            type="button"
+                            title="Register"
+                            icon="/user.svg"
+                            variant="btn_dark_green"
+                            // onClick={toggleLoginForm}
+                        />
+                    </Link>
+                    <Link href="/login">
+                        <Button
+                            type="button"
+                            title="Login"
+                            icon="/user.svg"
+                            variant="btn_dark_green"
+                            // onClick={toggleLoginForm}
+                        />
+                    </Link>
                 </div>
+
+
 
                 <Image
                     src="menu.svg"
@@ -49,21 +64,6 @@ const Navbar = () => {
                     className="inline-block cursor-pointer lg:hidden"
                 />
             </nav>
-
-            {showLoginForm &&
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={toggleLoginForm}>&times;</span>
-                        <form className="login-form">
-                            {/* Email and Password inputs */}
-                            <input type="email" placeholder="Email" className="email-input" />
-                            <input type="password" placeholder="Password" className="pass-input" />
-                            <p className="remember"> &#9675; Remember me </p>
-                            <button type="submit" className="submit">Sign In</button>
-                        </form>
-                    </div>
-                </div>
-            }
         </div>
     )
 }

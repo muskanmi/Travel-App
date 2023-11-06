@@ -18,7 +18,7 @@
   .modal-content {
     background-color: #fefefe;
     border: 1px solid #888;
-    width: 300px;
+    width: 500px;
     padding: 20px;
   }
   
@@ -38,20 +38,29 @@
   }
 
   .email-input {
-    border: 2px solid black;
+    border: 2px solid #ebe6e2;
+    background-color: #ebe6e2;
     padding: 10px;
     width: 100%;
   }
   .pass-input {
-    border: 2px solid black;
+    border: 2px solid #ebe6e2;
+    background-color: #ebe6e2;
     margin-top: 20px;
     padding: 10px;
     width: 100%;
   }
   .submit {
-    background-color: green;
+    background-color: #30af5b;
     width: 100%;
     color: white;
     margin-top: 20px;
     padding: 10px;
+    margin-bottom: 40px;
+  }
+  .remember {
+    padding-top: 15px;
+  }
+  .location-icon {
+    text-align: center;
   }

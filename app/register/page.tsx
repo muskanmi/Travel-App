@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, FormEvent } from 'react';
 
-const Login = () => {
+const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -43,4 +43,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
