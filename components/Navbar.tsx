@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { NAV_LINKS } from "@/constants"
 import Button from "./Button"
+import { signOut, useSession } from "next-auth/react";
 // import { useState } from 'react';
 // import LoginForm from "./LoginForm";
 import './modal.css'
@@ -18,6 +19,7 @@ const Navbar = () => {
     //     setShowLoginForm(!showLoginForm);
     // };
 
+    const { data: session }: any = useSession();
     return (
         <div className="nav-container">
             <nav className="flexBetween max-container padding-container relative z-30 py-5">
@@ -34,24 +36,35 @@ const Navbar = () => {
                 </ul>
 
                 <div className="lg:flexCenter hidden">
-                    <Link href="/register" style={{ marginRight: '10px'}}>
-                        <Button
-                            type="button"
-                            title="Register"
-                            icon="/user.svg"
-                            variant="btn_dark_green"
-                            // onClick={toggleLoginForm}
-                        />
-                    </Link>
-                    <Link href="/login">
-                        <Button
-                            type="button"
-                            title="Login"
-                            icon="/user.svg"
-                            variant="btn_dark_green"
-                            // onClick={toggleLoginForm}
-                        />
-                    </Link>
+                    {!session ? (
+                        <>
+                            <Link href="/register" style={{ marginRight: '10px' }}>
+                                <Button
+                                    type="button"
+                                    title="Register"
+                                    icon="/user.svg"
+                                    variant="btn_dark_green"
+                                // onClick={toggleLoginForm}
+                                />
+                            </Link>
+                            <Link href="/login">
+                                <Button
+                                    type="button"
+                                    title="Login"
+                                    icon="/user.svg"
+                                    variant="btn_dark_green"
+                                // onClick={toggleLoginForm}
+                                />
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            {session.user?.email}
+                            <li>
+                                <button onClick={() => {signOut();}} className="p-2 px-5 -mt-1 rounded-full" style={{ background: "#30af5b", color: "white", fontWeight: "bold"}}>Logout</button>
+                            </li>
+                        </>
+                    )}
                 </div>
 
 
